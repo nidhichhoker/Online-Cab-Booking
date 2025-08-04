@@ -1,0 +1,35 @@
+
+
+
+
+
+MySQL commands that used to create the Tables
+--------------------------------------------------
+
+CREATE DATABASE cabsOnline;
+use cabsOnline;
+
+CREATE TABLE Customer (
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL PRIMARY KEY,
+    password VARCHAR(100) NOT NULL,
+    phoneNumber INT(100), -- Use INT instead of int(100)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+CREATE TABLE BookingTable (
+    passengername VARCHAR(50) NOT NULL,
+    phoneNumber INT(100), -- Use INT instead of int(100)
+    email VARCHAR(100) NOT NULL PRIMARY KEY,
+    pickupAddress VARCHAR(100) NOT NULL,
+    destination VARCHAR(50) NOT NULL,
+    pickupDateTime VARCHAR(50) NOT NULL,
+    bookingReferencenumber VARCHAR(50) NOT NULL,
+    bookingDateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(50) NOT NULL,
+    customerName VARCHAR(50),
+   
+    CONSTRAINT fk_customer_email FOREIGN KEY (email) REFERENCES Customer(email)
+);
